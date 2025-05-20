@@ -176,8 +176,11 @@ if __name__ == "__main__":
     # You can add a try/except here for the main function call if needed
 
     # --- Automatically Determine Output CSV Path ---
-    # Get the directory where this script is located
-    script_dir = os.path.dirname(os.path.abspath(__file__)) + f'\\exports\\'
+    # Get the workspace root directory (one level up from src)
+    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + f'\\exports\\'
+    
+    # Create exports directory if it doesn't exist
+    os.makedirs(script_dir, exist_ok=True)
 
     # Get the base name of the input file (e.g., "frontend.gui")
     input_filename_only = os.path.basename(input_file)
